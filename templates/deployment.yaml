@@ -1,0 +1,62 @@
+{{- with .Values.v4.apiAgenda }}
+{{ $serviceName := default "apiagenda" .name}}
+{{- if .enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $serviceName }}
+spec:
+  selector:
+    matchLabels:
+      run: {{- $serviceName | indent 1}}
+  replicas: {{ default 1 .replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        run: {{- $serviceName | indent 1}}
+      {{- if .secretsArn }}
+      annotations:
+        secrets.k8s.aws/sidecarInjectorWebhook: enabled
+        secrets.k8s.aws/secret-arn: {{ .secretsArn}}
+      {{- end }}
+    spec:
+      imagePullSecrets:
+        - name: {{ default "gcp-registry" .imagePullSecretsName }}
+      containers:
+        - image: {{ default "api-agenda:latest" .containers.imageName}}
+          imagePullPolicy: IfNotPresent
+          name: {{- $serviceName | indent 1}}
+          {{- if and .containers.volumeMounts }}
+          volumeMounts:
+            {{- range $k, $v := .containers.volumeMounts}}
+            - name: {{ $k }}
+              mountPath: {{ $v.mountPath}}
+            {{- end }}            
+          {{- end }}
+          {{- if .containers.envFrom }}
+          envFrom:
+            {{- if .containers.envFrom.configMap }}
+            - configMapRef:
+                name: {{- $serviceName | indent 1}}-configmap
+            {{- end }}
+            {{- if .containers.envFrom.secrets }}
+            - secretRef:
+                name: {{- $serviceName | indent 1}}-secrets
+            {{- end }}
+          {{- end }}
+          {{- include "linkapi.containersEnv" . | indent 10 }}
+          {{- include "linkapi.containersPorts" . | indent 10 }}
+          resources:
+            limits:
+              memory: {{ .containers.resources.limits.memory}}Mi
+            requests:
+              memory: {{ .containers.resources.requests.memory}}Mi
+          {{- include "linkapi.healthcheck" .containers | indent 10}}
+      {{- include "linkapi.initContainers" . | indent 6}}
+{{- end -}}
+{{- end -}}

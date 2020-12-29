@@ -1,0 +1,35 @@
+{{- with .Values.v4.apiAgenda }}
+{{ $serviceName := default "apiagenda" .name}}
+{{- if and .enabled .services -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $serviceName }}-service
+spec:
+{{- with .services }}
+  type: {{ .type }}
+  ports:
+    {{- range $key, $val := .ports }}
+    - name: {{ $val.name }}
+      port: {{ $val.port }}
+      protocol: {{ $val.protocol }}
+      targetPort: {{ $val.targetPort }}
+    {{- end }}
+  selector:
+    run: {{ $serviceName }}
+{{- end -}}
+{{- else if .enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $serviceName }}-service
+spec:
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    run: {{ $serviceName }}
+  type: LoadBalancer
+{{- end -}}
+{{- end -}}
