@@ -6,11 +6,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ $serviceName }}-configmap
-  namespace: "noah-api"
+  namespace: noah-api
 data: 
   {{- range $k, $v := .containers.envFrom.configMap.data }}
   {{$k}}: {{$v}}
   {{- end }}
 {{- end }}
 {{- end }}
-{{- end }}clear
+{{- end }}

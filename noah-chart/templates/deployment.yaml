@@ -5,7 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ $serviceName }}
-  namespace: "noah-api"
+  namespace: noah-api
 spec:
   selector:
     matchLabels:

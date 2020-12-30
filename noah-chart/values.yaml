@@ -1,7 +1,4 @@
-v4:
-  enabled: true
-
-  apiAgenda:
+api:
     enabled: true
     name: noah
     containers:
