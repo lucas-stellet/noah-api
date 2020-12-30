@@ -1,10 +1,11 @@
-{{- with .Values.v4.apiAgenda }}
-{{ $serviceName := default "apiagenda" .name}}
+{{- with .Values.api }}
+{{ $serviceName := default "api" .name}}
 {{- if and .enabled .services -}}
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ $serviceName }}-service
+  namespace: "noah-api"
 spec:
 {{- with .services }}
   type: {{ .type }}

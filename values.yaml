@@ -3,6 +3,7 @@ v4:
 
   apiAgenda:
     enabled: true
+    name: noah
     containers:
       imageName: lustepe/simple-server-nodejs:latest
       envFrom: 
@@ -19,7 +20,3 @@ v4:
           memory: 200
         requests:
           memory: 200
-      healthcheck:
-        enabled: false
-    initContainers:  
-      enabled: false
