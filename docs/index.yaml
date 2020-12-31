@@ -3,17 +3,17 @@ entries:
   noah:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-12-31T01:27:59.422775087-03:00"
+    created: "2020-12-31T01:36:27.609955623-03:00"
     description: A Helm chart for Kubernetes
-    digest: b9b12bb13ff17a62bfbe4883db4620d511d225454fd4b045f9fc00acbc95029b
+    digest: 3539dd019a87a113ea185b20ce144b2b1ef9a2829000268c6ede7db0267b59da
     name: noah
     type: application
     urls:
-    - https://lucas-stellet.github.io/noah-api/noah-0.1.1.tgz
-    version: 0.1.1
+    - https://lucas-stellet.github.io/noah-api/noah-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-12-31T01:27:59.422507647-03:00"
+    created: "2020-12-31T01:36:27.609567952-03:00"
     description: A Helm chart for Kubernetes
     digest: a339613ce344fd4bb44001b84d971f00f14969ed081be8eaa0a0abee6e62c592
     name: noah
@@ -21,4 +21,4 @@ entries:
     urls:
     - https://lucas-stellet.github.io/noah-api/noah-0.1.0.tgz
     version: 0.1.0
-generated: "2020-12-31T01:27:59.422110429-03:00"
+generated: "2020-12-31T01:36:27.60915168-03:00"
