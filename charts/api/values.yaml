@@ -2,7 +2,7 @@ api:
     enabled: true
     name: noah
     containers:
-      imageName: lustepe/simple-server-nodejs:v2
+      imageName: lustepe/simple-server-nodejs:v1
       envFrom: 
         configMap:
           data:
