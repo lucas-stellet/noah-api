@@ -16,7 +16,7 @@ spec:
     api:
       containers:
         image:
-          repository: lucas-stellet/simple-server-nodejs
+          repository: lustepe/simple-server-nodejs
           tag: v1
         envFrom: 
           configMap:
