@@ -24,7 +24,7 @@ spec:
         rollme: {{ randAlphaNum 5 | quote }}
     spec:
       containers:
-        - image: {{ .containers.imageName}}
+        - image: {{ .containers.image.repository}}:{{ .containers.image.tag}}
           imagePullPolicy: IfNotPresent
           name: {{- $serviceName | indent 1}}
           {{- if and .containers.volumeMounts }}
