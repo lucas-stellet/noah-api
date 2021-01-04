@@ -8,7 +8,7 @@ metadata:
 spec:
   releaseName: api
   chart:
-    git: git@github.com:lucas-stellet/noahapi
+    git: git@github.com:lucas-stellet/noah-api
     path: charts/api
     ref: master
   values:
