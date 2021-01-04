@@ -1,0 +1,21 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: api
+  namespace: noah-api
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: api
+  chart:
+    git: git@github.com:lucas-stellet/noahapi
+    path: charts/api
+    ref: master
+  values:
+    api:
+      containers:
+        imageName: lustepe/simple-server-nodejs:latest
+        envFrom: 
+          configMap:
+            data:
+              MY_NAME: Tatiane
