@@ -2,11 +2,11 @@ api:
     enabled: true
     name: noah
     containers:
-      imageName: lustepe/simple-server-nodejs:latest
+      imageName: lustepe/simple-server-nodejs:v2
       envFrom: 
         configMap:
           data:
-            MY_NAME: Tatiane
+            MY_NAME: Noah
       ports:
         port1:
           name: http
