@@ -16,7 +16,6 @@ spec:
   values:
     api:
       containers:
-        imageName: lustepe/simple-server-nodejs:v2
         envFrom: 
           configMap:
             data:
