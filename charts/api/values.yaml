@@ -8,7 +8,7 @@ api:
       envFrom: 
         configMap:
           data:
-            MY_NAME: Noah
+            MY_NAME: Lucas
       ports:
         port1:
           name: http
