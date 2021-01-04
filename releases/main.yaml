@@ -5,7 +5,6 @@ metadata:
   namespace: noah-api
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:v*
 
 spec:
   releaseName: api
@@ -16,9 +15,6 @@ spec:
   values:
     api:
       containers:
-        image:
-          repository: lustepe/simple-server-nodejs
-          tag: v1
         envFrom: 
           configMap:
             data:
