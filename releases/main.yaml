@@ -18,7 +18,7 @@ spec:
       containers:
         image:
           repository: lustepe/simple-server-nodejs
-          tag: v2
+          tag: v1
         envFrom: 
           configMap:
             data:
