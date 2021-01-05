@@ -6,7 +6,7 @@ metadata:
   namespace: numero-dois
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/hellodois: glob:v[!12]
+    filter.fluxcd.io/hellodois: glob:v[!2]
 spec:
   releaseName: api
   chart:
@@ -17,7 +17,7 @@ spec:
     api:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v2
+        tag: v1
       containers:
         envFrom:
           configMap:
