@@ -2,8 +2,8 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: api
-  namespace: noah-api
+  name: helloum
+  namespace: numero-um
   annotations:
     fluxcd.io/automated: "true"
     filter.fluxcd.io/api: glob:v*
@@ -17,9 +17,9 @@ spec:
     api:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v2
+        tag: v1
       containers:
         envFrom:
           configMap:
             data:
-              MY_NAME: Noah
+              MY_NAME: Lucas
