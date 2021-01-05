@@ -17,7 +17,7 @@ spec:
     helloum:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v1
+        tag: v2
       containers:
         envFrom:
           configMap:
@@ -42,7 +42,7 @@ spec:
     hellodois:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v1
+        tag: v2
       containers:
         envFrom:
           configMap:
