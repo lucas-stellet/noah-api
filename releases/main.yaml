@@ -1,3 +1,4 @@
+---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
@@ -16,9 +17,9 @@ spec:
     api:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v1
+        tag: v2
       containers:
-        envFrom: 
+        envFrom:
           configMap:
             data:
               MY_NAME: Noah
