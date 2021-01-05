@@ -1,0 +1,50 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: helloum
+  namespace: numero-um
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/helloum: glob:v*
+spec:
+  releaseName: api
+  chart:
+    git: git@github.com:lucas-stellet/noah-api
+    path: charts/api
+    ref: master
+  values:
+    helloum:
+      image:
+        repository: lustepe/simple-server-nodejs
+        tag: v1
+      containers:
+        envFrom:
+          configMap:
+            data:
+              MY_NAME: Lucas
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: hellodois
+  namespace: numero-dois
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/hellodois: glob:v*
+spec:
+  releaseName: api
+  chart:
+    git: git@github.com:lucas-stellet/noah-api
+    path: charts/api
+    ref: master
+  values:
+    hellodois:
+      image:
+        repository: lustepe/simple-server-nodejs
+        tag: v1
+      containers:
+        envFrom:
+          configMap:
+            data:
+              MY_NAME: Noah
