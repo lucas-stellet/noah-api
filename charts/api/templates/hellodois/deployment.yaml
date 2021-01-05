@@ -5,7 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ $serviceName }}
-  namespace: numero-dois
+  namespace: hello
 spec:
   selector:
     matchLabels:
