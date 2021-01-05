@@ -17,7 +17,7 @@ spec:
     helloum:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v2
+        tag: v3
       containers:
         envFrom:
           configMap:
