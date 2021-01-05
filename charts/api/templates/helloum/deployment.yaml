@@ -1,11 +1,11 @@
-{{- with .Values.api }}
-{{ $serviceName := default "api" .name}}
+{{- with .Values.helloum }}
+{{ $serviceName := default "helloum" .name}}
 {{- if .enabled -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ $serviceName }}
-  namespace: noah-api
+  namespace: numero-um
 spec:
   selector:
     matchLabels:

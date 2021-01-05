@@ -1,12 +1,12 @@
-{{- with .Values.api }}
-{{ $serviceName := default "api" .name}}
+{{- with .Values.helloum }}
+{{ $serviceName := default "helloum" .name}}
 {{- if and .enabled .containers.envFrom}}
 {{- if .containers.envFrom.configMap }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ $serviceName }}-configmap
-  namespace: noah-api
+  namespace: numero-um
 data: 
   {{- range $k, $v := .containers.envFrom.configMap.data }}
   {{$k}}: {{$v}}

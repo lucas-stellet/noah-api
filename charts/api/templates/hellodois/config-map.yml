@@ -1,0 +1,16 @@
+{{- with .Values.hellodois }}
+{{ $serviceName := default "hellodois" .name}}
+{{- if and .enabled .containers.envFrom}}
+{{- if .containers.envFrom.configMap }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $serviceName }}-configmap
+  namespace: numero-dois
+data: 
+  {{- range $k, $v := .containers.envFrom.configMap.data }}
+  {{$k}}: {{$v}}
+  {{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

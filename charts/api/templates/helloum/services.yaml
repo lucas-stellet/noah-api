@@ -1,0 +1,37 @@
+{{- with .Values.helloum }}
+{{ $serviceName := default "helloum" .name}}
+{{- if and .enabled .services -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $serviceName }}-service
+  namespace: numero-um
+spec:
+{{- with .services }}
+  type: {{ .type }}
+  ports:
+    {{- range $key, $val := .ports }}
+    - name: {{ $val.name }}
+      port: {{ $val.port }}
+      protocol: {{ $val.protocol }}
+      targetPort: {{ $val.targetPort }}
+    {{- end }}
+  selector:
+    run: {{ $serviceName }}
+{{- end -}}
+{{- else if .enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $serviceName }}-service
+  namespace: numero-um
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    run: {{ $serviceName }}
+  type: LoadBalancer
+{{- end -}}
+{{- end -}}

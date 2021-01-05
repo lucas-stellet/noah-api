@@ -1,0 +1,51 @@
+{{- with .Values.hellodois }}
+{{ $serviceName := default "hellodois" .name}}
+{{- if .enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $serviceName }}
+  namespace: numero-dois
+spec:
+  selector:
+    matchLabels:
+      run: {{- $serviceName | indent 1}}
+  replicas: {{ default 1 .replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        run: {{- $serviceName | indent 1}}
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+        - image: {{ .image.repository}}:{{ .image.tag}}
+          imagePullPolicy: IfNotPresent
+          name: {{- $serviceName | indent 1}}
+          {{- if and .containers.volumeMounts }}
+          volumeMounts:
+            {{- range $k, $v := .containers.volumeMounts}}
+            - name: {{ $k }}
+              mountPath: {{ $v.mountPath}}
+            {{- end }}            
+          {{- end }}
+          {{- if .containers.envFrom }}
+          envFrom:
+            {{- if .containers.envFrom.configMap }}
+            - configMapRef:
+                name: {{- $serviceName | indent 1}}-configmap
+            {{- end }}
+          {{- end }}
+          {{- include "linkapi.containersPorts" . | indent 10 }}
+          resources:
+            limits:
+              memory: {{ .containers.resources.limits.memory}}Mi
+            requests:
+              memory: {{ .containers.resources.requests.memory}}Mi
+{{- end -}}
+{{- end -}}
