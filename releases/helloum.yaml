@@ -6,7 +6,7 @@ metadata:
   namespace: numero-um
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/api: glob:v*
+    filter.fluxcd.io/helloum: glob:v*
 spec:
   releaseName: api
   chart:
