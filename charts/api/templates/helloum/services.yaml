@@ -27,7 +27,7 @@ metadata:
   namespace: numero-um
 spec:
   ports:
-    - port: 8080
+    - port: 80
       protocol: TCP
       targetPort: 3000
   selector:
