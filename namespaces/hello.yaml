@@ -2,4 +2,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: hello
+  name: hello-two
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-one
