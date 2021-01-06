@@ -27,7 +27,7 @@ spec:
     hellodois:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v2
+        tag: v1
       containers:
         envFrom:
           configMap:
