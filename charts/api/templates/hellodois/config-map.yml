@@ -6,7 +6,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ $serviceName }}-configmap
-  namespace: hello
+  namespace: hello-two
 data: 
   {{- range $k, $v := .containers.envFrom.configMap.data }}
   {{$k}}: {{$v}}
