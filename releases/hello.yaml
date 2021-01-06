@@ -7,8 +7,7 @@ metadata:
   annotations:
     fluxcd.io/automated: "true"
     filter.fluxcd.io/helloum: glob:v*
-    repository.fluxcd.io/helloum: helloum.image.repository
-    tag.fluxcd.io/helloum: helloum.image.tag
+    filter.fluxcd.io/hellodois: semver:v1
 spec:
   releaseName: api
   chart:
@@ -28,7 +27,7 @@ spec:
     hellodois:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v3
+        tag: v1
       containers:
         envFrom:
           configMap:
