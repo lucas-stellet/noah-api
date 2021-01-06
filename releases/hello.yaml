@@ -18,17 +18,17 @@ spec:
     helloum:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v1
+        tag: v2
       containers:
         envFrom:
           configMap:
             data:
               MY_NAME: Lucas
-    
+
     hellodois:
       image:
         repository: lustepe/simple-server-nodejs
-        tag: v1
+        tag: v2
       containers:
         envFrom:
           configMap:
